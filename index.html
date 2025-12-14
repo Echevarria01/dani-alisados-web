@@ -7,127 +7,118 @@
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="css/styles.css">
 
-
-  <!-- Config opcional Tailwind -->
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          rosa: "#C2185B",     // rosa Dani Alisados
-          dorado: "#D4AF37",   // dorado premium
-          grisTexto: "#374151"
+  <!-- Configuración Tailwind -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            rosa: "#C2185B",
+            dorado: "#D4AF37",
+            grisTexto: "#374151"
+          }
         }
       }
     }
-  }
-</script>
+  </script>
 
+  <!-- CSS personalizado -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
 
-
-<body class="bg-white text-gray-800">
+<body class="bg-white text-grisTexto">
 
   <!-- ================= HEADER ================= -->
-  <header class="flex items-center justify-between px-6 py-5 border-b">
-  <div class="flex items-center gap-3">
-    <img src="assets/img/logo.png" alt="Dani Alisados" class="h-14">
+  <header class="flex flex-col items-center pt-10 pb-6">
+  
+  <!-- Logo -->
+  <div class="bg-white rounded-full shadow-lg p-6 mb-6">
+    <img 
+      src="assets/img/logo.png" 
+      alt="Dani Alisados" 
+      class="h-28 w-auto logo-float"
+    >
   </div>
 
-  <nav class="hidden md:flex gap-8 font-medium text-grisTexto">
-    <a href="#inicio" class="hover:text-rosa">Inicio</a>
-    <a href="#productos" class="hover:text-rosa">Productos</a>
-    <a href="#sobre" class="hover:text-rosa">Sobre</a>
-    <a href="#contacto" class="hover:text-rosa">Contacto</a>
+  <!-- Navegación -->
+  <nav class="hidden md:flex gap-10 font-medium text-grisTexto">
+    <a href="#inicio" class="hover:text-rosa transition">Inicio</a>
+    <a href="#productos" class="hover:text-rosa transition">Productos</a>
+    <a href="#sobre" class="hover:text-rosa transition">Sobre</a>
+    <a href="#contacto" class="hover:text-rosa transition">Contacto</a>
   </nav>
+
 </header>
 
 
+
   <!-- ================= HERO ================= -->
- <section id="inicio" class="text-center py-24 bg-white">
-  <h1 class="text-4xl md:text-5xl font-bold text-rosa mb-4">
-    Dani Alisados
-  </h1>
+  <section id="inicio" class="text-center pt-20 pb-24 bg-white">
 
-  <p class="text-lg md:text-xl text-grisTexto mb-8">
-    Especialistas en alisados y tratamientos capilares
-  </p>
+    <h1 class="text-4xl md:text-5xl font-bold text-rosa mb-4">
+      Dani Alisados
+    </h1>
 
-  <a href="#productos"
-     class="inline-block bg-rosa text-white px-10 py-3 rounded-full hover:bg-pink-700 transition">
-    Ver catálogo
-  </a>
-</section>
+    <p class="text-lg md:text-xl mb-8">
+      Especialistas en alisados y tratamientos capilares
+    </p>
 
+    <a href="#productos"
+       class="inline-block bg-rosa text-white px-10 py-3 rounded-full hover:bg-pink-700 transition">
+      Ver catálogo
+    </a>
+  </section>
 
   <!-- ================= PRODUCTOS ================= -->
-  <section id="productos" class="max-w-6xl mx-auto px-6 py-16">
-    <h2 class="text-3xl font-bold text-center mb-12">
-      Catálogo de Productos
+  <section id="productos" class="max-w-6xl mx-auto px-6 py-20">
+    <h2 class="text-3xl font-bold text-center text-rosa mb-14">
+      Catálogo de productos
     </h2>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
 
       <!-- PRODUCTO 1 -->
       <div class="border rounded-2xl p-6 shadow-sm hover:shadow-xl transition hover:-translate-y-1">
-  <img src="assets/img/productos/keratina.jpg"
-       alt="Keratina Premium"
-       class="rounded-xl mb-5">
+        <img src="assets/img/productos/keratina.jpg" alt="Keratina Premium" class="rounded-xl mb-5">
 
-  <h3 class="text-lg font-semibold text-grisTexto mb-2">
-    Keratina Premium
-  </h3>
+        <h3 class="text-lg font-semibold mb-2">Keratina Premium</h3>
+        <p class="text-sm text-gray-600 mb-5">
+          Tratamiento alisador que repara y elimina el frizz.
+        </p>
 
-  <p class="text-sm text-gray-600 mb-5">
-    Tratamiento alisador que repara y elimina el frizz.
-  </p>
-
-  <button
-    onclick="consultarWhatsApp('Keratina Premium')"
-    class="w-full bg-rosa text-white py-2 rounded-full hover:bg-pink-700 transition">
-    Consultar por WhatsApp
-  </button>
-</div>
+        <button onclick="consultarWhatsApp('Keratina Premium')"
+          class="w-full bg-rosa text-white py-2 rounded-full hover:bg-pink-700 transition">
+          Consultar por WhatsApp
+        </button>
+      </div>
 
       <!-- PRODUCTO 2 -->
-      <div class="border rounded-2xl p-5 shadow hover:shadow-xl transition">
-        <img src="assets/img/productos/botox.jpg"
-             alt="Botox Capilar"
-             class="rounded-xl mb-4">
+      <div class="border rounded-2xl p-6 shadow-sm hover:shadow-xl transition hover:-translate-y-1">
+        <img src="assets/img/productos/botox.jpg" alt="Botox Capilar" class="rounded-xl mb-5">
 
-        <h3 class="text-lg font-semibold mb-2">
-          Botox Capilar
-        </h3>
-
-        <p class="text-sm text-gray-600 mb-4">
+        <h3 class="text-lg font-semibold mb-2">Botox Capilar</h3>
+        <p class="text-sm text-gray-600 mb-5">
           Hidratación profunda y brillo intenso.
         </p>
 
-        <button
-          onclick="consultarWhatsApp('Botox Capilar')"
-          class="w-full bg-black text-white py-2 rounded-xl hover:bg-gray-800 transition">
+        <button onclick="consultarWhatsApp('Botox Capilar')"
+          class="w-full bg-rosa text-white py-2 rounded-full hover:bg-pink-700 transition">
           Consultar por WhatsApp
         </button>
       </div>
 
       <!-- PRODUCTO 3 -->
-      <div class="border rounded-2xl p-5 shadow hover:shadow-xl transition">
-        <img src="assets/img/productos/mascarilla.jpg"
-             alt="Mascarilla Nutritiva"
-             class="rounded-xl mb-4">
+      <div class="border rounded-2xl p-6 shadow-sm hover:shadow-xl transition hover:-translate-y-1">
+        <img src="assets/img/productos/mascarilla.jpg" alt="Mascarilla Nutritiva" class="rounded-xl mb-5">
 
-        <h3 class="text-lg font-semibold mb-2">
-          Mascarilla Nutritiva
-        </h3>
-
-        <p class="text-sm text-gray-600 mb-4">
+        <h3 class="text-lg font-semibold mb-2">Mascarilla Nutritiva</h3>
+        <p class="text-sm text-gray-600 mb-5">
           Nutre, suaviza y fortalece el cabello.
         </p>
 
-        <button
-          onclick="consultarWhatsApp('Mascarilla Nutritiva')"
-          class="w-full bg-black text-white py-2 rounded-xl hover:bg-gray-800 transition">
+        <button onclick="consultarWhatsApp('Mascarilla Nutritiva')"
+          class="w-full bg-rosa text-white py-2 rounded-full hover:bg-pink-700 transition">
           Consultar por WhatsApp
         </button>
       </div>
@@ -136,38 +127,35 @@
   </section>
 
   <!-- ================= SOBRE ================= -->
- <section id="sobre" class="bg-gray-50 py-20 px-6">
-  <div class="max-w-4xl mx-auto text-center">
-    <h2 class="text-3xl font-bold text-rosa mb-6">
-      Sobre Dani Alisados
-    </h2>
+  <section id="sobre" class="bg-gray-50 py-20 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-rosa mb-6">
+        Sobre Dani Alisados
+      </h2>
 
-    <p class="text-gray-700 leading-relaxed text-lg">
-      En Dani Alisados nos especializamos en realzar la belleza del cabello,
-      utilizando productos profesionales de alta calidad para lograr resultados
-      duraderos, saludables y elegantes.
-    </p>
-  </div>
-</section>
-
+      <p class="text-lg text-gray-700 leading-relaxed">
+        En Dani Alisados nos especializamos en realzar la belleza del cabello,
+        utilizando productos profesionales de alta calidad para lograr resultados
+        duraderos, saludables y elegantes.
+      </p>
+    </div>
+  </section>
 
   <!-- ================= CONTACTO ================= -->
-  <footer id="contacto" class="py-16 text-center">
-    <h2 class="text-2xl font-bold mb-6">Contacto</h2>
+  <footer id="contacto" class="py-20 text-center">
+    <h2 class="text-2xl font-bold text-rosa mb-8">Contacto</h2>
 
-    <a href="https://wa.me/3855150389"
-   target="_blank"
-   class="inline-block bg-rosa text-white px-10 py-4 rounded-full text-lg hover:bg-pink-700 transition">
-  Consultanos por WhatsApp
-</a>
+    <a href="https://wa.me/5493855150389"
+       target="_blank"
+       class="inline-block bg-rosa text-white px-10 py-4 rounded-full text-lg hover:bg-pink-700 transition">
+      Consultanos por WhatsApp
+    </a>
 
-
-    <p class="text-sm text-gray-500 mt-6">
+    <p class="text-sm text-gray-400 mt-10">
       © 2025 Dani Alisados
     </p>
   </footer>
 
-  <!-- JS -->
   <script src="js/main.js"></script>
 </body>
 </html>
