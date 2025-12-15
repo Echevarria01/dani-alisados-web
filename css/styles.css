@@ -76,3 +76,28 @@ a {
   100% { transform: translateY(0); }
 }
 
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-hover:hover {
+  transform: translateY(-6px);
+  transition: 0.3s;
+}
+
+.whatsapp-pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
