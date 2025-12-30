@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Dani Alisados</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            rosa: "#C2185B",
+            grisTexto: "#374151"
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .hero-bg {
+      background-image: url("{% static 'assets/img/home-bg.jpg' %}");
+    }
+  </style>
+</head>
+
+<body class="bg-white text-grisTexto">
+
+<!-- HEADER -->
+<header class="flex flex-col items-center py-10">
+  <img src="{% static 'assets/img/logo.png' %}" class="h-28 mb-6" alt="Dani Alisados">
+</header>
+
+<!-- HERO -->
+<section class="hero-bg relative min-h-screen bg-cover bg-center text-white flex items-center justify-center">
+  <div class="absolute inset-0 bg-black/50"></div>
+
+  <div class="relative z-10 text-center px-6">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4">
+      Dani Alisados
+    </h1>
+
+    <p class="text-lg md:text-xl mb-8">
+      Especialistas en alisados y tratamientos capilares
+    </p>
+
+    <a href="{% url 'catalogo' %}"
+       class="inline-block bg-rosa px-10 py-3 rounded-full hover:bg-pink-700 transition">
+      Ver catálogo
+    </a>
+  </div>
+</section>
+
+<div class="absolute top-6 right-6">
+  {% if user.is_authenticated %}
+    <a href="{% url 'dashboard' %}"
+       class="bg-rosa text-white px-5 py-2 rounded-full mr-2">
+      Panel
+    </a>
+
+    <a href="{% url 'logout' %}"
+       class="border border-rosa text-rosa px-5 py-2 rounded-full">
+      Cerrar sesión
+    </a>
+  {% else %}
+    <a href="{% url 'login' %}"
+       class="bg-rosa text-white px-6 py-2 rounded-full">
+      Iniciar sesión
+    </a>
+  {% endif %}
+</div>
+
+
+<!-- CONTACTO -->
+<section class="py-20 text-center">
+  <h2 class="text-3xl font-bold text-rosa mb-6">Contacto</h2>
+
+  <div class="flex justify-center gap-10">
+    <a href="https://wa.me/5493855150389" target="_blank">
+      <img src="{% static 'assets/img/whatsapp.png' %}" class="w-14">
+    </a>
+
+    <a href="https://instagram.com/dani_alisadoss" target="_blank">
+      <img src="{% static 'assets/img/instagram.png' %}" class="w-14">
+    </a>
+  </div>
+</section>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Iniciar sesión | Dani Alisados</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            rosa: "#C2185B",
+            grisTexto: "#374151"
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body class="min-h-screen flex items-center justify-center bg-gray-100 text-grisTexto">
+
+  <div class="bg-white rounded-2xl shadow-xl p-10 w-full max-w-md">
+
+    <!-- Logo -->
+    <div class="flex justify-center mb-6">
+      <img src="{% static 'assets/img/logo.png' %}" alt="Dani Alisados" class="h-20">
+    </div>
+
+    <h1 class="text-2xl font-bold text-center text-rosa mb-8">
+      Acceso Administrador
+    </h1>
+
+    <!-- Errores -->
+    {% if form.errors %}
+      <div class="bg-red-100 text-red-700 text-sm p-3 rounded mb-6 text-center">
+        Usuario o contraseña incorrectos
+      </div>
+    {% endif %}
+
+    <!-- Formulario -->
+    <form method="post" class="space-y-5">
+      {% csrf_token %}
+
+      <div>
+        <label class="block text-sm font-medium mb-1">
+          Usuario
+        </label>
+        <input
+          type="text"
+          name="username"
+          required
+          class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-rosa"
+        >
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">
+          Contraseña
+        </label>
+        <input
+          type="password"
+          name="password"
+          required
+          class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-rosa"
+        >
+      </div>
+
+      <button
+        type="submit"
+        class="w-full bg-rosa text-white py-3 rounded-full font-semibold hover:bg-pink-700 transition">
+        Iniciar sesión
+      </button>
+    </form>
+
+    <p class="text-xs text-gray-400 text-center mt-6">
+      Acceso exclusivo para administración
+    </p>
+
+  </div>
+
+</body>
+</html>

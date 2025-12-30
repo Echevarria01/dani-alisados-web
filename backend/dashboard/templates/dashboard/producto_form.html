@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ accion }} producto | Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            rosa: "#C2185B"
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+
+  <!-- HEADER -->
+  <header class="bg-white shadow px-6 py-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold text-rosa">
+      {{ accion }} producto · Dani Alisados
+    </h1>
+
+    <a href="{% url 'dashboard_productos' %}"
+       class="text-sm text-gray-500 hover:text-rosa">
+      Volver
+    </a>
+  </header>
+
+  <!-- CONTENIDO -->
+  <main class="max-w-3xl mx-auto py-12 px-6">
+
+    <div class="bg-white rounded-2xl shadow p-8">
+
+      <form method="post" enctype="multipart/form-data" class="space-y-6">
+        {% csrf_token %}
+
+        <!-- Nombre -->
+        <div>
+          <label class="block font-medium mb-1">
+            Nombre del producto
+          </label>
+          {{ form.nombre }}
+        </div>
+
+        <!-- Precio -->
+        <div>
+          <label class="block font-medium mb-1">
+            Precio
+          </label>
+          {{ form.precio }}
+        </div>
+
+        <!-- Descripción -->
+        <div>
+          <label class="block font-medium mb-1">
+            Descripción
+          </label>
+          {{ form.descripcion }}
+        </div>
+
+        <!-- Imagen -->
+        <div>
+          <label class="block font-medium mb-1">
+            Imagen
+          </label>
+          {{ form.imagen }}
+        </div>
+
+        <!-- Disponible -->
+        <div class="flex items-center gap-2">
+          {{ form.disponible }}
+          <label class="font-medium">
+            Producto disponible
+          </label>
+        </div>
+
+        <!-- BOTONES -->
+        <div class="flex gap-4 pt-6">
+          <button type="submit"
+                  class="bg-rosa text-white px-8 py-2 rounded-full hover:bg-pink-700 transition">
+            Guardar
+          </button>
+
+          <a href="{% url 'dashboard_productos' %}"
+             class="px-8 py-2 rounded-full border hover:bg-gray-100 transition">
+            Cancelar
+          </a>
+        </div>
+
+      </form>
+
+    </div>
+
+  </main>
+
+</body>
+</html>
