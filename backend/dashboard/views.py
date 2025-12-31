@@ -15,7 +15,7 @@ def dashboard(request):
 @login_required
 def dashboard_home(request):
     if not request.user.is_staff:
-        return redirect('catalogo')
+        return redirect('dashboard:productos')
 
     return render(request, 'dashboard/home.html')
 
@@ -23,7 +23,7 @@ def dashboard_home(request):
 @login_required
 def productos_list(request):
     if not request.user.is_staff:
-        return redirect('catalogo')
+        return redirect('dashboard:productos')
 
     productos = Producto.objects.all()
     return render(request, 'dashboard/productos_list.html', {
@@ -34,12 +34,12 @@ def productos_list(request):
 @login_required
 def producto_nuevo(request):
     if not request.user.is_staff:
-        return redirect('catalogo')
+        return redirect('dashboard:productos')
 
     form = ProductoForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         form.save()
-        return redirect('dashboard_productos')
+        return redirect('dashboard:productos')
 
     return render(request, 'dashboard/producto_form.html', {
         'form': form,
@@ -50,14 +50,14 @@ def producto_nuevo(request):
 @login_required
 def producto_editar(request, pk):
     if not request.user.is_staff:
-        return redirect('catalogo')
+        return redirect('dashboard:productos')
 
     producto = get_object_or_404(Producto, pk=pk)
     form = ProductoForm(request.POST or None, request.FILES or None, instance=producto)
 
     if form.is_valid():
         form.save()
-        return redirect('dashboard_productos')
+        return redirect('dashboard:productos')
 
     return render(request, 'dashboard/producto_form.html', {
         'form': form,
@@ -68,11 +68,11 @@ def producto_editar(request, pk):
 @login_required
 def producto_eliminar(request, pk):
     if not request.user.is_staff:
-        return redirect('catalogo')
+        return redirect('dashboard:productos')
 
     producto = get_object_or_404(Producto, pk=pk)
     producto.delete()
-    return redirect('dashboard_productos')
+    return redirect('dashboard:productos')
 
 
 # Create your views here.

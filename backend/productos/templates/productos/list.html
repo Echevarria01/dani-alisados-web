@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Catálogo | Dani Alisados</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            rosa: "#C2185B",
+            grisTexto: "#374151"
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body class="bg-white text-grisTexto">
+
+  <!-- HEADER -->
+  <header class="flex flex-col items-center py-10">
+    <img src="{% static 'assets/img/logo.png' %}" class="h-24 mb-6" alt="Dani Alisados">
+
+    <a href="/" class="text-sm hover:text-rosa transition">
+      ← Volver al inicio
+    </a>
+  </header>
+
+  <!-- CATÁLOGO -->
+  <section class="max-w-6xl mx-auto px-6 py-16">
+
+    <h1 class="text-3xl font-bold text-center text-rosa mb-14">
+      Catálogo de productos
+    </h1>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+
+      {% for producto in productos %}
+      <div class="border rounded-2xl p-6 shadow-sm hover:shadow-xl transition">
+
+        {% if producto.imagen %}
+          <img 
+            src="{{ producto.imagen.url }}"
+            class="rounded-xl mb-5 h-48 w-full object-contain bg-white"
+            alt="{{ producto.nombre }}"
+          >
+        {% endif %}
+
+        <h3 class="text-lg font-semibold mb-2">
+          {{ producto.nombre }}
+        </h3>
+
+        {% if producto.disponible and producto.precio > 0 %}
+          <p class="text-xl font-bold text-rosa mb-2">
+            ${{ producto.precio }}
+          </p>
+        {% else %}
+          <p class="text-xl font-bold text-red-600 mb-2">
+            AGOTADO
+          </p>
+        {% endif %}
+
+        <p class="text-sm text-gray-600 mb-5">
+          {{ producto.descripcion }}
+        </p>
+
+        <button
+          onclick="consultarWhatsApp('{{ producto.nombre }}')"
+          class="w-full bg-rosa text-white py-2 rounded-full hover:bg-pink-700 transition">
+          Consultar por WhatsApp
+        </button>
+      </div>
+      {% empty %}
+        <p class="col-span-full text-center text-gray-500">
+          No hay productos disponibles en este momento.
+        </p>
+      {% endfor %}
+
+    </div>
+  </section>
+
+  <!-- BOTÓN WHATSAPP -->
+  <a href="https://wa.me/5493855150389"
+     target="_blank"
+     class="fixed bottom-6 right-6 w-16 h-16 rounded-full shadow-xl hover:scale-110 transition z-50">
+    <img 
+      src="{% static 'assets/img/whatsapp.png' %}"
+      alt="WhatsApp"
+      class="w-full h-full rounded-full object-cover"
+    >
+  </a>
+
+  <!-- JS -->
+  <script>
+    function consultarWhatsApp(producto) {
+      const telefono = "5493855150389";
+      const mensaje = `Hola! Quisiera consultar por el producto: ${producto}`;
+      const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, "_blank");
+    }
+  </script>
+
+</body>
+</html>
+

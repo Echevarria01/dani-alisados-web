@@ -30,7 +30,7 @@
     </h1>
 
     <div class="flex gap-4">
-      <a href="{% url 'dashboard_home' %}" class="text-sm text-gray-500 hover:text-rosa">
+      <a href="{% url 'dashboard:dashboard' %}" class="text-sm text-gray-500 hover:text-rosa">
         Dashboard
       </a>
       <a href="{% url 'logout' %}" class="text-sm text-gray-500 hover:text-rosa">
@@ -45,7 +45,7 @@
     <div class="flex justify-between items-center mb-8">
       <h2 class="text-2xl font-bold">Listado de productos</h2>
 
-      <a href="{% url 'producto_nuevo' %}"
+      <a href="{% url 'dashboard:producto_nuevo' %}"
          class="bg-rosa text-white px-6 py-2 rounded-full hover:bg-pink-700 transition">
         + Nuevo producto
       </a>
@@ -86,11 +86,11 @@
             </td>
 
             <td class="px-6 py-4 text-center space-x-2">
-              <a href="{% url 'producto_editar' producto.id %}"
+              <a href="{% url 'dashboard:producto_editar' producto.pk %}"
                  class="text-blue-600 hover:underline">
                 Editar
               </a>
-              <a href="{% url 'producto_eliminar' producto.id %}"
+              <a href="{% url 'dashboard:producto_eliminar' producto.pk %}"
                  class="text-red-600 hover:underline"
                  onclick="return confirm('¿Eliminar este producto?')">
                 Eliminar

@@ -2,11 +2,12 @@ from django.shortcuts import render
 from .models import Producto
 
 def home(request):
-    return render(request, 'productos/home.html')
+    return render(request, 'home.html')
+
 
 def catalogo(request):
     productos = Producto.objects.all()
-    return render(request, 'productos/catalogo.html', {
+    return render(request, 'productos/list.html', {
         'productos': productos
     })
 
